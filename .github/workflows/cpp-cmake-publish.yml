@@ -14,32 +14,26 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Copy src to root
-        run: cp ./cUnicodeLib/cUnicodeLib.c .
-      - name: Copy headers to root
-        run: cp ./cUnicodeLib/cUnicodeLib.h .
       - name: Upload artifact release
         uses: actions/upload-artifact@v2
         with:
           name: artifact-windows
           path: |
-            ./cUnicodeLib.c
-            ./cUnicodeLib.h
+            ./cUnicodeLib/cUnicodeLib.c
+            ./cUnicodeLib/cUnicodeLib.h
   upload-ubuntu:
     name: Upload ubuntu
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Copy src to root
-        run: cp ./cUnicodeLib/cUnicodeLib.c .
-      - name: Copy headers to root
-        run: cp ./cUnicodeLib/cUnicodeLib.h .
       - name: Upload artifact release
         uses: actions/upload-artifact@v2
         with:
           name: artifact-ubuntu
           path: |
-            ./cUnicodeLib.c
-            ./cUnicodeLib.h
+            ./cUnicodeLib/cUnicodeLib.c
+            ./cUnicodeLib/cUnicodeLib.h
   release-project:
     name: Release project
     runs-on: ubuntu-latest
@@ -70,6 +64,9 @@ jobs:
           asset_path: release-windows.zip
           asset_name: cUnicodeLib-windows-v${{ github.run_number }}.zip
           asset_content_type: application/zip
+      - name: Delete windows release files
+        run: |
+          rm release-windows.zip
       - name: Download ubuntu artifact content
         uses: actions/download-artifact@v2
         with:
@@ -85,5 +82,5 @@ jobs:
         with:
           upload_url: ${{ steps.create-new-release.outputs.upload_url }}
           asset_path: release-linux.tar.gz
-          asset_name: cUnicodeLib-linux-v${{ github.run_number }}.tar.gz
+          asset_name: cUnicodeLib-unix-v${{ github.run_number }}.tar.gz
           asset_content_type: application/zip
