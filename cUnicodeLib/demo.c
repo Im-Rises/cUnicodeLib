@@ -24,6 +24,8 @@ int main(int argc, char* argv[])
 	PUTS_UNICODE_COLOR(RED, "кошка 日本国 ╔");
 	PRINTF_UNICODE_COLOR(HIGHLIGHT_BLUE, "кошка 日本国 ╔ %d\n", 121213);
 	PUTS_UNICODE_COLOR(HIGHLIGHT_YELLOW, "кошка 日本国 ╔");
+	PRINTF_UNICODE_COLOR(HIGHLIGHT_BLACK, "кошка 日本国 ╔ %d\n", 12121);
+	PRINTF_UNICODE_COLOR(WHITE, "кошка 日本国 ╔ %d\n", 12121);
 
 	return 0;
 }

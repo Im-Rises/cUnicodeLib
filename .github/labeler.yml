@@ -1,0 +1,20 @@
+repo:
+- '*'
+
+CMakeLists:
+- 'cUnicodeLib/CMakeLists.txt'
+
+source:
+- 'cUnicodeLib'
+
+demo:
+- 'NesEmulator/demo.*'
+
+readme:
+- 'README.md'
+
+cUnicode-src:
+- 'cUnicodeLib/cUnicodeLib.*'
+
+github-actions:
+- '.github/**/*.yml'
