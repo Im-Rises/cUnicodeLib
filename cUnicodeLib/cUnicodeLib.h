@@ -7,7 +7,7 @@
 #ifdef _WIN32
 
 #include <io.h>
-#include <windows.h>
+#include <Windows.h>
 
 /*
 Code system:
@@ -55,7 +55,7 @@ Code system:
 //#define PRINTF_UNICODE(COLOR, ...) system("color 1"); wprintf(L##__VA_ARGS__)
 //#define PUTS_UNICODE(COLOR, STRING) system("color 2"); _putws(L##STRING)
 
-#elif __unix__
+#elif defined(__unix__) || defined(__APPLE__)
 
 /*
 Code system:
@@ -97,7 +97,7 @@ White	37				47
 
 #define SET_CONSOLE_COLORS(COLOR) prinf(COLOR)
 
-#elif __APPLE__
+#else
 
 #error ERROR : cUnicodeLib, UNSUPPORTED PLATFORM
 
@@ -112,12 +112,7 @@ White	37				47
 //#define PRINTF_UNICODE(...) printf(__VA_ARGS__)
 //#define PUTS_UNICODE(STRING) puts(STRING)
 
-#else
-
-#error ERROR : cUnicodeLib, UNSUPPORTED PLATFORM
-
 #endif
-
 
 void initUnicodeLib();
 
