@@ -19,6 +19,14 @@ Add them to the project and call the init function below before calling any of t
 void initUnicodeLib();
 ```
 
+The different functions you can use are listed below:
+
+| Function | Description | Parameters | 
+|----------|-------------|------------|
+|          |             |            |
+|          |             |            |
+|          |             |            |
+
 ## Github-Actions
 
 [![flawfinder](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/flawfinder.yml/badge.svg?branch=main)](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/flawfinder.yml)
@@ -29,11 +37,11 @@ void initUnicodeLib();
 
 The project is set with a set of different scripts:
 
-- flawfinder :
-- CMake :
-- CodeQl :
-- Microsoft C++ Code Analysis :
-- Cpp Cmake Publish : 
+- flawfinder : to check for security flaws in the code
+- CMake : to build the project for Windows, MacOs and Linux
+- CodeQl : to check for code quality and security
+- Microsoft C++ Code Analysis : Microsoft code analysis tool 
+- Cpp Cmake Publish : to publish the project on GitHub
 
 ## Documentations
 
