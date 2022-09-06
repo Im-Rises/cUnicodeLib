@@ -13,7 +13,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Copy src to root
       - name: Upload artifact release
         uses: actions/upload-artifact@v2
         with:
@@ -26,7 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Copy src to root
       - name: Upload artifact release
         uses: actions/upload-artifact@v2
         with:
