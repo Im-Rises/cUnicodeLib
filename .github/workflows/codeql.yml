@@ -40,8 +40,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install libs
-      run: sudo apt-get install libsfml-dev
+#    - name: Install libs
+#      run: sudo apt-get install libsfml-dev
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
