@@ -92,7 +92,7 @@ White	37				47
 #define PRINTF_UNICODE(...) printf(__VA_ARGS__)
 #define PUTS_UNICODE(STRING) puts(STRING)
 
-#define PRINTF_UNICODE_COLOR(COLOR,...) printf(COLOR); printf(__VA_ARGS__)
+#define PRINTF_UNICODE_COLOR(COLOR,...) printf(COLOR); printf(__VA_ARGS__); printf("\x1b[49m")
 #define PUTS_UNICODE_COLOR(COLOR, STRING) puts(COLOR STRING)
 
 #define SET_CONSOLE_COLORS(COLOR) prinf(COLOR)
@@ -114,6 +114,15 @@ White	37				47
 
 #endif
 
-void initUnicodeLib();
+void initUnicodeLib()
+{
+#ifdef _WIN32
+    if (!_setmode(_fileno(stdout), _O_U8TEXT))
+    {
+        printf("Cannot enable UTF8 in console.");
+        exit(1);
+    }
+#endif
+}
 
 #endif  // !DEF_CUNICODELIB
