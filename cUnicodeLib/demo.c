@@ -40,10 +40,9 @@ int main() {
     printf("кошка 日本国\n");
 
 
-
-    printf("\x1b[44m Windows\n");
-    printf("%sWindows%s\n", "\x1b[44m", "\x1b[0m");
-    printf("\x1b[44m Windows\n");
+    printf("%s Windows\n", ANSI_COLOR_RED);
+    printf("%s Windows%s\n", ANSI_COLOR_BLUE, ANSI_COLOR_RESET);
+    printf("%s Windows\n", ANSI_COLOR_RED);
 #else
     printf("%s Linux\n", ANSI_COLOR_RED);
     printf("%s Linux%s\n", ANSI_COLOR_BLUE, ANSI_COLOR_RESET);
