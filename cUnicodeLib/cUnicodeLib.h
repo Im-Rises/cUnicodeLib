@@ -88,8 +88,11 @@ White	37				47
 #define PRINTF_UNICODE(...) printf(__VA_ARGS__)
 #define PUTS_UNICODE(STRING) puts(STRING)
 
-#define PRINTF_UNICODE_COLOR(COLOR,...) printf(COLOR); printf(__VA_ARGS__); printf("\x1b[49m\x1b[K")
-#define PUTS_UNICODE_COLOR(COLOR, STRING) puts(COLOR STRING); printf("\x1b[49m\x1b[K")
+#define PRINTF_UNICODE_COLOR(COLOR,...) printf(COLOR); printf(__VA_ARGS__); printf("\x1b[0m\x1b[49m\x1b[K")
+#define PUTS_UNICODE_COLOR(COLOR, STRING) puts(COLOR STRING); printf("\x1b[0m\x1b[49m\x1b[K")
+
+// \x1b[0m is used to reset the text color to the default color, in addition to \x1b[49m to reset the background color.
+// The \x1b[K sequence is also added to clear any leftover characters on the current line.
 
 //#define SET_CONSOLE_COLORS(COLOR) prinf(COLOR)
 
