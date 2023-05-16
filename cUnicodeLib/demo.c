@@ -52,12 +52,12 @@ int printf_test_varargs(int colorCode, int fontCode, const char* format, ...) {
 int main() {
     initUnicodeLib();
 
-    // Test get Ansi Code
-    //    printf("%s Get Ansi code кошка 日本国\n\n", getAnsiColor(31));
-
     // Test vargars and get ansi code
     printf_test_varargs(31, 44, "Printf test varargs кошка 日本国 %s, %d\n\n", "Windows", 10);
     printf("Test normal printf кошка 日本国\n\n");
+
+    // //     Test get Ansi Code
+    //    printf("%s Get Ansi code кошка 日本国\n\n", getAnsiColor(44));
 
     // // Test
     //    printf("кошка 日本国\n");
