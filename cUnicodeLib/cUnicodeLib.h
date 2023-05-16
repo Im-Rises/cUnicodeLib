@@ -105,14 +105,20 @@ White	37				47
 
 #endif
 
+//#include <locale.h> // for setlocale()
+
 void initUnicodeLib()
 {
+//    setlocale(LC_ALL, "en_US.UTF-8");
+SetConsoleOutputCP(CP_UTF8);
+printf("кошка 日本国\n");
+
 #ifdef _WIN32
-    if (!_setmode(_fileno(stdout), _O_U8TEXT))
-    {
-        printf("Cannot enable UTF8 in console.");
-        exit(1);
-    }
+//    if (!_setmode(_fileno(stdout), _O_U8TEXT))
+//    {
+//        printf("Cannot enable UTF8 in console.");
+//        exit(1);
+//    }
 #endif
 }
 
