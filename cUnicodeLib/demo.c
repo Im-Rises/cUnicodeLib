@@ -27,10 +27,20 @@ void initUnicodeLib() {
 #endif
 }
 
+#include <stdarg.h>
+
+int printf_test(int colorCode, int fontCode, const char* format, ...) {
+    va_list args;
+    va_start(args, format);
+    vprintf(format, args);
+    va_end(args);
+}
 
 
 int main() {
     initUnicodeLib();
+
+    printf_test(0, 0, "Printf test varargs кошка 日本国 %s, %d\n\n", "Windows", 10);
 
     printf("кошка 日本国\n");
     printf("%s Windows\n", ANSI_COLOR_RED);
