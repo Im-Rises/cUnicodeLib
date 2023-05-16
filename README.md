@@ -15,7 +15,8 @@ Simple C Library to write UTF8 code in Windows and macOS and Linux in console mo
 Windows:
 - GetStdHandle() 
 - SetConsoleOutputCP(CP_UTF8); 
-- _setmode(_fileno(stdout), _O_U8TEXT); 
+- _setmode(_fileno(stdout), _O_U8TEXT);
+- setlocale(LC_ALL, "en_US.UTF-8");
 - ANSI escape code (for color and highlight)
 
 Linux: 

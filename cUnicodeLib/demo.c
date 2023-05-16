@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 
 #ifdef _WIN32
 #include <io.h>
@@ -16,32 +16,41 @@
 #define ANSI_COLOR_RESET "\033[0m"
 #endif
 
+#include "cUnicodeLib.h"
+
 int main()
 {
-#ifdef __WIN32
+#ifdef _WIN32
+//    // Working for UTF8 but no ANSI escape codes (colors)
+//    SetConsoleOutputCP(CP_UTF8);
+//    printf("кошка 日本国\n");
+
     // Configure console to enable ANSI escape codes
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    if (hOut == INVALID_HANDLE_VALUE) {
-        return 1;
-    }
-    DWORD dwMode = 0;
-    if (!GetConsoleMode(hOut, &dwMode)) {
-        return 1;
-    }
-    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-    if (!SetConsoleMode(hOut, dwMode)) {
-        return 1;
-    }
-    _setmode(_fileno(stdout), _O_U8TEXT);
+//    initUnicodeLib();
+//    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+//    if (hOut == INVALID_HANDLE_VALUE) {
+//        return 1;
+//    }
+//    DWORD dwMode = 0;
+//    if (!GetConsoleMode(hOut, &dwMode)) {
+//        return 1;
+//    }
+//    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+//    if (!SetConsoleMode(hOut, dwMode)) {
+//        return 1;
+//    }
+//    _setmode(_fileno(stdout), _O_U8TEXT);
 
     printf("\x1b[44m Windows\n");
     printf("%sWindows%s\n", "\x1b[44m", "\x1b[0m");
     printf("\x1b[44m Windows\n");
 #else
-    printf("\033[31m Linux\n");
-    printf("%s Linux%s\n", "\033[44m", "\033[0m");
-    printf("\033[31m Linux\n");
+    printf("%s Linux\n", ANSI_COLOR_RED);
+    printf("%s Linux%s\n", ANSI_COLOR_BLUE, ANSI_COLOR_RESET);
+    printf("%s Linux\n", ANSI_COLOR_RED);
 #endif
+
+
     return 0;
 }
 
