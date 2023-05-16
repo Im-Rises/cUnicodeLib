@@ -10,6 +10,18 @@
 
 Simple C Library to write UTF8 code in Windows and macOS and Linux in console mode.
 
+## TODO
+
+Windows:
+- GetStdHandle() 
+- SetConsoleOutputCP(CP_UTF8); 
+- _setmode(_fileno(stdout), _O_U8TEXT); 
+- ANSI escape code (for color and highlight)
+
+Linux: 
+- native
+- ncruses (for color and highlight)
+
 ## Features
 
 - [x] Write UTF8 code in Windows and macOS and Linux in console mode.
@@ -52,22 +64,6 @@ By passing one of the following macros as a first parameter in the functions `PR
 | MAGENTA              | Magenta color                                                            |
 | CYAN                 | Cyan color                                                               |
 | WHITE                | White color                                                              |
-
-[//]: # (| BRIGHT_BLACK         | Bright black color                                                       |)
-
-[//]: # (| BRIGHT_RED           | Bright red color                                                         |)
-
-[//]: # (| BRIGHT_GREEN         | Bright green color                                                       |)
-
-[//]: # (| BRIGHT_YELLOW        | Bright yellow color                                                      |)
-
-[//]: # (| BRIGHT_BLUE          | Bright blue color                                                        |)
-
-[//]: # (| BRIGHT_MAGENTA       | Bright magenta color                                                     |)
-
-[//]: # (| BRIGHT_CYAN          | Bright cyan color                                                        |)
-
-[//]: # (| BRIGHT_WHITE         | Bright white color                                                       |)
 
 ### Highlight text parameters
 
