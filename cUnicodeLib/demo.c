@@ -24,7 +24,7 @@ void initUnicodeLib() {
 #endif
 }
 
-const char* getAnsiColor(int colorCode) {
+static const char* getAnsiColor(int colorCode) {
     static char code[10];
 #ifdef _WIN32
     sprintf_s(code, sizeof(code), PREFIX "%dm", colorCode);
@@ -34,6 +34,8 @@ const char* getAnsiColor(int colorCode) {
     return code;
 }
 
+#define GET_ANSI_COLOR(colorCode) getAnsiColor(colorCode)
+
 
 int printf_test_varargs(int colorCode, int fontCode, const char* format, ...) {
     printf("%s%s", getAnsiColor(colorCode), getAnsiColor(fontCode));
@@ -41,7 +43,8 @@ int printf_test_varargs(int colorCode, int fontCode, const char* format, ...) {
     va_start(args, format);
     vprintf(format, args);
     va_end(args);
-    printf("%s", getAnsiColor(0));
+    //    printf("%s", getAnsiColor(0));
+    printf("%s", GET_ANSI_COLOR(0));
 }
 
 
@@ -52,10 +55,12 @@ int main() {
     printf_test_varargs(31, 44, "Printf test varargs кошка 日本国 %s, %d\n\n", "Windows", 10);
     printf("Test normal printf кошка 日本国\n\n");
 
-    //     Test get Ansi Code
+    // Test get Ansi Code
     printf("%s Get Ansi code кошка 日本国%s\n", getAnsiColor(92), getAnsiColor(0));
     printf("кошка 日本国\n");
     printf("%s Get Ansi code кошка 日本国%s\n", getAnsiColor(92), ANSI_COLOR_RESET);
+    printf("кошка 日本国\n");
+    printf("%s Get Ansi code кошка 日本国%s\n", GET_ANSI_COLOR(92), ANSI_COLOR_RESET);
     printf("кошка 日本国\n");
 
     // Test
