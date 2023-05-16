@@ -16,20 +16,27 @@
 #define ANSI_COLOR_RESET "\033[0m"
 #endif
 
-#include "cUnicodeLib.h"
-
 int main() {
 #ifdef _WIN32
     //    // Working for UTF8 but no ANSI escape codes (colors)
     //    SetConsoleOutputCP(CP_UTF8);
     //    printf("кошка 日本国\n");
 
-    // Working for ANSI escape codes (colors) but no UTF8
+    //    // Working for ANSI escape codes (colors) but no UTF8
+    //    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    //    DWORD dwMode = 0;
+    //    GetConsoleMode(hOut, &dwMode);
+    //    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    //    SetConsoleMode(hOut, dwMode);
+    //    printf("кошка 日本国\n");
+
+    // Working for UTF8 and ANSI escape codes (colors)
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     DWORD dwMode = 0;
     GetConsoleMode(hOut, &dwMode);
     dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
     SetConsoleMode(hOut, dwMode);
+    SetConsoleOutputCP(CP_UTF8);
     printf("кошка 日本国\n");
 
 
