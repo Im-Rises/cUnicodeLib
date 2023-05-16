@@ -40,25 +40,30 @@ const char* getAnsiColor(int colorCode) {
 
 
 int printf_test_varargs(int colorCode, int fontCode, const char* format, ...) {
+    printf("%s%s", getAnsiColor(colorCode), getAnsiColor(fontCode));
     va_list args;
     va_start(args, format);
     vprintf(format, args);
     va_end(args);
+    printf("%s", getAnsiColor(0));
 }
 
 
 int main() {
     initUnicodeLib();
 
-    printf("%s Get Ansi code кошка 日本国\n\n", getAnsiColor(31));
+    // Test get Ansi Code
+    //    printf("%s Get Ansi code кошка 日本国\n\n", getAnsiColor(31));
 
-    printf_test_varargs(0, 0, "Printf test varargs кошка 日本国 %s, %d\n\n", "Windows", 10);
+    // Test vargars and get ansi code
+    printf_test_varargs(31, 44, "Printf test varargs кошка 日本国 %s, %d\n\n", "Windows", 10);
+    printf("Test normal printf кошка 日本国\n\n");
 
-
-//    printf("кошка 日本国\n");
-//    printf("%s Windows\n", ANSI_COLOR_RED);
-//    printf("%s Windows%s\n", ANSI_COLOR_BLUE, ANSI_COLOR_RESET);
-//    printf("%s Windows\n", ANSI_COLOR_RED);
+    // // Test
+    //    printf("кошка 日本国\n");
+    //    printf("%s Windows\n", ANSI_COLOR_RED);
+    //    printf("%s Windows%s\n", ANSI_COLOR_BLUE, ANSI_COLOR_RESET);
+    //    printf("%s Windows\n", ANSI_COLOR_RED);
 
     return 0;
 }
