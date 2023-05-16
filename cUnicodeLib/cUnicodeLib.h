@@ -48,7 +48,7 @@ Code system:
 #define PRINTF_UNICODE_COLOR(COLOR,...) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COLOR); wprintf(L##__VA_ARGS__)
 #define PUTS_UNICODE_COLOR(COLOR, STRING) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COLOR); _putws(L##STRING)
 
-#define SET_CONSOLE_COLORS(COLOR) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COLOR)
+//#define SET_CONSOLE_COLORS(COLOR) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), COLOR)
 
 //#define PRINTF_UNICODE(COLOR, ...) system("color 1"); wprintf(L##__VA_ARGS__)
 //#define PUTS_UNICODE(COLOR, STRING) system("color 2"); _putws(L##STRING)
@@ -89,18 +89,10 @@ White	37				47
 #define PUTS_UNICODE(STRING) puts(STRING)
 
 #define PRINTF_UNICODE_COLOR(COLOR,...) printf(COLOR); printf(__VA_ARGS__); printf("\x1b[49m\x1b[K")
-#define PUTS_UNICODE_COLOR(COLOR, STRING) puts(COLOR STRING)
+#define PUTS_UNICODE_COLOR(COLOR, STRING) puts(COLOR STRING); printf("\x1b[49m\x1b[K")
 
-#define SET_CONSOLE_COLORS(COLOR) prinf(COLOR)
+//#define SET_CONSOLE_COLORS(COLOR) prinf(COLOR)
 
-//#define RED      "\x1b[31m"
-//#define GREEN    "\x1b[32m"
-//#define YELLOW   "\x1b[33m"
-//#define BLUE     "\x1b[34m"
-//#define MAGENTA  "\x1b[35m"
-//#define CYAN     "\x1b[36m"
-//#define WHITE    "\x1b[0m"
-//
 //#define PRINTF_UNICODE(...) printf(__VA_ARGS__)
 //#define PUTS_UNICODE(STRING) puts(STRING)
 
