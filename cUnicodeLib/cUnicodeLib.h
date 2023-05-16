@@ -42,8 +42,6 @@ Code system:
 #define HIGHLIGHT_MAGENTA    0x50
 #define HIGHLIGHT_CYAN       0x90
 
-//typedef wchar_t* stringUnicode;
-
 #define PRINTF_UNICODE(...) wprintf(L##__VA_ARGS__)
 #define PUTS_UNICODE(STRING) _putws(L##STRING)
 
@@ -87,19 +85,13 @@ White	37				47
 #define HIGHLIGHT_MAGENTA    "\x1b[45m"
 #define HIGHLIGHT_CYAN       "\x1b[46m"
 
-//typedef char* stringUnicode;
-
 #define PRINTF_UNICODE(...) printf(__VA_ARGS__)
 #define PUTS_UNICODE(STRING) puts(STRING)
 
-#define PRINTF_UNICODE_COLOR(COLOR,...) printf(COLOR); printf(__VA_ARGS__); printf("\x1b[49m")
+#define PRINTF_UNICODE_COLOR(COLOR,...) printf(COLOR); printf(__VA_ARGS__)
 #define PUTS_UNICODE_COLOR(COLOR, STRING) puts(COLOR STRING)
 
 #define SET_CONSOLE_COLORS(COLOR) prinf(COLOR)
-
-#else
-
-#error ERROR : cUnicodeLib, UNSUPPORTED PLATFORM
 
 //#define RED      "\x1b[31m"
 //#define GREEN    "\x1b[32m"
@@ -111,6 +103,10 @@ White	37				47
 //
 //#define PRINTF_UNICODE(...) printf(__VA_ARGS__)
 //#define PUTS_UNICODE(STRING) puts(STRING)
+
+#else
+
+#error ERROR : cUnicodeLib, UNSUPPORTED PLATFORM
 
 #endif
 
