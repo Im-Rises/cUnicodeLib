@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdarg.h>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -27,9 +28,18 @@ void initUnicodeLib() {
 #endif
 }
 
-#include <stdarg.h>
+const char* getAnsiColor(int colorCode) {
+    static char code[10];
+#ifdef _WIN32
+    sprintf_s(code, sizeof(code), "\033[%dm", colorCode);
+#else
+    snprintf(code, sizeof(code), "\x1b[%dm", colorCode);
+#endif
+    return code;
+}
 
-int printf_test(int colorCode, int fontCode, const char* format, ...) {
+
+int printf_test_varargs(int colorCode, int fontCode, const char* format, ...) {
     va_list args;
     va_start(args, format);
     vprintf(format, args);
@@ -40,12 +50,15 @@ int printf_test(int colorCode, int fontCode, const char* format, ...) {
 int main() {
     initUnicodeLib();
 
-    printf_test(0, 0, "Printf test varargs кошка 日本国 %s, %d\n\n", "Windows", 10);
+    printf("%s Get Ansi code кошка 日本国\n\n", getAnsiColor(31));
 
-    printf("кошка 日本国\n");
-    printf("%s Windows\n", ANSI_COLOR_RED);
-    printf("%s Windows%s\n", ANSI_COLOR_BLUE, ANSI_COLOR_RESET);
-    printf("%s Windows\n", ANSI_COLOR_RED);
+    printf_test_varargs(0, 0, "Printf test varargs кошка 日本国 %s, %d\n\n", "Windows", 10);
+
+
+//    printf("кошка 日本国\n");
+//    printf("%s Windows\n", ANSI_COLOR_RED);
+//    printf("%s Windows%s\n", ANSI_COLOR_BLUE, ANSI_COLOR_RESET);
+//    printf("%s Windows\n", ANSI_COLOR_RED);
 
     return 0;
 }
