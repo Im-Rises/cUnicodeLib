@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdarg.h>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -58,6 +57,7 @@ Code system:
 #define ESC_BG_B_WHITE ESC_PREFIX "107" ESC_SUFFIX
 
 #define ESC_RESET_ALL ESC_PREFIX "0" ESC_SUFFIX
+
 #define ESC_RESET_FG ESC_PREFIX "39" ESC_SUFFIX
 #define ESC_RESET_BG ESC_PREFIX "49" ESC_SUFFIX
 
