@@ -1,21 +1,99 @@
-﻿#include "cUnicodeLib.h"
+#include <stdio.h>
 
-int main(int argc, char* argv[])
-{
-	initUnicodeLib();
+#ifdef _WIN32
+#include <Windows.h>
+#endif
 
-    //Working on both
-	PRINTF_UNICODE("кошка 日本国 ╔ %d\n", 1);
-	PUTS_UNICODE("кошка 日本国 ╔");
-	PRINTF_UNICODE_COLOR(BLUE, "кошка 日本国 ╔ %d\n", 2);
-	PUTS_UNICODE_COLOR(RED, "кошка 日本国 ╔");
-    PRINTF_UNICODE_COLOR(WHITE, "кошка 日本国 ╔ %d\n", 3);
+/*
+Code system:
+    Color	    Foreground Code	Background Code
+    Black	    30				40
+    Red		    31				41
+    Green	    32				42
+    Yellow	    33				43
+    Blue	    34				44
+    Magenta	    35				45
+    Cyan	    36				46
+    White	    37				47
+*/
 
-    PRINTF_UNICODE("\n\n");
-    PRINTF_UNICODE_COLOR(HIGHLIGHT_CYAN, "sqdsdsq\n");
-    PRINTF_UNICODE_COLOR(GREEN, "кошка 日本国 ╔ %d\n", 4);
-    PRINTF_UNICODE("кошка 日本国 ╔ %d\n", 5);
-    PRINTF_UNICODE_COLOR(HIGHLIGHT_YELLOW, "кошка 日本国 ╔ %d\n", 6);
+#define ESC_PREFIX "\x1b["
+#define ESC_SUFFIX "m"
 
-	return 0;
+#define ESC_FG_BLACK ESC_PREFIX "30" ESC_SUFFIX
+#define ESC_FG_RED ESC_PREFIX "31" ESC_SUFFIX
+#define ESC_FG_GREEN ESC_PREFIX "32" ESC_SUFFIX
+#define ESC_FG_YELLOW ESC_PREFIX "33" ESC_SUFFIX
+#define ESC_FG_BLUE ESC_PREFIX "34" ESC_SUFFIX
+#define ESC_FG_MAGENTA ESC_PREFIX "35" ESC_SUFFIX
+#define ESC_FG_CYAN ESC_PREFIX "36" ESC_SUFFIX
+#define ESC_FG_WHITE ESC_PREFIX "37" ESC_SUFFIX
+
+#define ESC_BG_BLACK ESC_PREFIX "40" ESC_SUFFIX
+#define ESC_BG_RED ESC_PREFIX "41" ESC_SUFFIX
+#define ESC_BG_GREEN ESC_PREFIX "42" ESC_SUFFIX
+#define ESC_BG_YELLOW ESC_PREFIX "43" ESC_SUFFIX
+#define ESC_BG_BLUE ESC_PREFIX "44" ESC_SUFFIX
+#define ESC_BG_MAGENTA ESC_PREFIX "45" ESC_SUFFIX
+#define ESC_BG_CYAN ESC_PREFIX "46" ESC_SUFFIX
+#define ESC_BG_WHITE ESC_PREFIX "47" ESC_SUFFIX
+
+#define ESC_FG_B_BLACK ESC_PREFIX "90" ESC_SUFFIX
+#define ESC_FG_B_RED ESC_PREFIX "91" ESC_SUFFIX
+#define ESC_FG_B_GREEN ESC_PREFIX "92" ESC_SUFFIX
+#define ESC_FG_B_YELLOW ESC_PREFIX "93" ESC_SUFFIX
+#define ESC_FG_B_BLUE ESC_PREFIX "94" ESC_SUFFIX
+#define ESC_FG_B_MAGENTA ESC_PREFIX "95" ESC_SUFFIX
+#define ESC_FG_B_CYAN ESC_PREFIX "96" ESC_SUFFIX
+#define ESC_FG_B_WHITE ESC_PREFIX "97" ESC_SUFFIX
+
+#define ESC_BG_B_BLACK ESC_PREFIX "100" ESC_SUFFIX
+#define ESC_BG_B_RED ESC_PREFIX "101" ESC_SUFFIX
+#define ESC_BG_B_GREEN ESC_PREFIX "102" ESC_SUFFIX
+#define ESC_BG_B_YELLOW ESC_PREFIX "103" ESC_SUFFIX
+#define ESC_BG_B_BLUE ESC_PREFIX "104" ESC_SUFFIX
+#define ESC_BG_B_MAGENTA ESC_PREFIX "105" ESC_SUFFIX
+#define ESC_BG_B_CYAN ESC_PREFIX "106" ESC_SUFFIX
+#define ESC_BG_B_WHITE ESC_PREFIX "107" ESC_SUFFIX
+
+#define ESC_RESET_ALL ESC_PREFIX "0" ESC_SUFFIX
+
+#define ESC_RESET_FG ESC_PREFIX "39" ESC_SUFFIX
+#define ESC_RESET_BG ESC_PREFIX "49" ESC_SUFFIX
+
+// #define ESC_DELETE_LINE ESC_PREFIX "2K" ESC_SUFFIX //\x1b[K
+
+#define ESC_REVERSE_FG_BG_ON ESC_PREFIX "7" ESC_SUFFIX
+#define ESC_REVERSE_FG_BG_OFF ESC_PREFIX "27" ESC_SUFFIX
+
+#define ESC_BOLD_ON ESC_PREFIX "1" ESC_SUFFIX
+#define ESC_FAINT_ON ESC_PREFIX "2" ESC_SUFFIX
+#define ESC_BOLD_FAINT_OFF ESC_PREFIX "22" ESC_SUFFIX
+
+#define PRINTF_UNICODE(...) printf(__VA_ARGS__)
+#define PUTS_UNICODE(STRING) puts(STRING)
+
+void initUnicodeLib() {
+#ifdef _WIN32
+    // Set ANSI escape codes
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD dwMode = 0;
+    GetConsoleMode(hOut, &dwMode);
+    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    SetConsoleMode(hOut, dwMode);
+    // Set UTF8
+    SetConsoleOutputCP(CP_UTF8);
+#endif
+}
+
+int main() {
+    initUnicodeLib();
+
+    printf("%s%sColored BG %s no more colored BG\n", ESC_FG_BLUE, ESC_BG_B_MAGENTA, ESC_RESET_ALL);
+    printf("кошка 日本国\n");
+    printf(ESC_FG_B_GREEN "кошка 日本国\n" ESC_RESET_ALL);
+
+    PRINTF_UNICODE(ESC_FG_B_BLUE ESC_BG_RED "кошка " ESC_BG_BLUE "日本国 %s\n" ESC_RESET_ALL, "test");
+
+    return 0;
 }
