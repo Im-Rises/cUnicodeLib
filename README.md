@@ -10,6 +10,8 @@
 
 Simple C Library to write UTF8 code in Windows and macOS and Linux in console mode.
 
+![Capture d'écran 2023-05-16 222504](https://github.com/Im-Rises/cUnicodeLib/assets/59691442/b8e94c42-91f5-4fa3-9ac6-ca853663c7a6)
+
 ## Features
 
 - [x] Write UTF8
@@ -39,81 +41,61 @@ void initUnicodeLib();
 To write a text you can use the function below:
 
 ```c
-PRINTF_UNICODE("кошка 日本国");
+printf("кошка 日本国");
 ```
 
-This one will write the previous text correctly in the console.
+### Set font color
 
-PLACEHOLDER FOR THE IMAGE
-
-#### Change the color of the text
-
-You can also change the color of the text with the function below:
+To set the font color you can use the function below:
 
 ```c
-PRINTF_UNICODE(ESC_FG_RED "кошка 日本国");
+printf(ESC_COLOR_RED "кошка 日本国");
 ```
 
-PLACEHOLDER FOR THE IMAGE
+#### Set text highlight
 
-#### Change the highlight of the text
-
-You can also change the highlight of the text with the function below:
+To set the text highlight you can use the function below:
 
 ```c
-PRINTF_UNICODE(ESC_BG_BLUE "кошка 日本国");
+printf(ESC_HIGHLIGHT "кошка 日本国");
 ```
 
-PLACEHOLDER FOR THE IMAGE
-
-#### Combine font color and highlight
-
-You can also combine both of them:
-
-```c
-PRINTF_UNICODE(ESC_FG_RED ESC_BG_BLUE "кошка 日本国");
-```
-
-PLACEHOLDER FOR THE IMAGE
-
-#### Reset the color and highlight
+#### Reset all
 
 To reset the color and highlight you can use the function below:
 
 ```c
-PRINTF_UNICODE(ESC_RESET_ALL);
+printf(ESC_RESET_ALL "кошка 日本国");
 ```
-
-This will reset the color and highlight to the default one.
-
-PLACEHOLDER FOR THE IMAGE
-
-#### Use of varying arguments
-
-You can also use varying arguments with the function below:
-
-```c
-PRINTF_UNICODE(ESC_FG_RED ESC_BG_BLUE  "кошка 日本国 %d %s", 42, "Hello World" ESC_RESET_ALL);
-```
-
-This one print the text with the color and takes two arguments to print (like the printf function).
-The last argument is used to reset the color and highlight to the default one for the next print.
-
-PLACEHOLDER FOR THE IMAGE
 
 #### Notes
 
 > **Note:**  
 > If you don't call the `ESC_RESET_ALL` function, the color and highlight will be kept for the next prints.
 
+## Demo
+
+The demo can be found in the `demo.c` file in the `cUnicodeLib` folder.
+use CMake or the command line to compile the demo.
+
+```bash
+gcc demo.c
+```
+
+Start the demo with the command line.
+
+```bash
+./a.out
+```
+
+The output should be like this:
+
+![Capture d'écran 2023-05-16 222504](https://github.com/Im-Rises/cUnicodeLib/assets/59691442/b8e94c42-91f5-4fa3-9ac6-ca853663c7a6)
+
 ## Test the lib
 
 To test the lib a `demo.c` can be found in the `cUnicodeLib` folder. You can base your code on this file and by
 compiling it with the `cUnicodeLib` files, you'll see a display example.
-
-Placeholder for the demo image
-
-![demo_image](https://user-images.githubusercontent.com/59691442/188744506-294cbed5-9492-4216-ad2f-b57fe21bf449.png)
 
 ## Github-Actions
 

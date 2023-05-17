@@ -64,7 +64,7 @@ Code system:
 #define ESC_RESET_FG ESC_PREFIX "39" ESC_SUFFIX
 #define ESC_RESET_BG ESC_PREFIX "49" ESC_SUFFIX
 
-#define ESC_DELETE_LINE ESC_PREFIX "2K" ESC_SUFFIX //\x1b[K
+#define ESC_DELETE_LINE ESC_PREFIX "2K" //\x1b[K
 
 #define ESC_REVERSE_FG_BG_ON ESC_PREFIX "7" ESC_SUFFIX
 #define ESC_REVERSE_FG_BG_OFF ESC_PREFIX "27" ESC_SUFFIX
@@ -73,8 +73,8 @@ Code system:
 #define ESC_FAINT_ON ESC_PREFIX "2" ESC_SUFFIX
 #define ESC_BOLD_FAINT_OFF ESC_PREFIX "22" ESC_SUFFIX
 
-#define PRINTF_UNICODE(...) printf(__VA_ARGS__)
-#define PUTS_UNICODE(STRING) puts(STRING)
+// #define PRINTF_UNICODE(...) printf(__VA_ARGS__)
+// #define PUTS_UNICODE(STRING) puts(STRING)
 
 void initUnicodeLib() {
 #ifdef _WIN32
