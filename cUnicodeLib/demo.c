@@ -5,6 +5,19 @@
 #include <Windows.h>
 #endif
 
+/*
+Code system:
+    Color	    Foreground Code	Background Code
+    Black	    30				40
+    Red		    31				41
+    Green	    32				42
+    Yellow	    33				43
+    Blue	    34				44
+    Magenta	    35				45
+    Cyan	    36				46
+    White	    37				47
+*/
+
 #define ESC_PREFIX "\x1b["
 #define ESC_SUFFIX "m"
 
@@ -48,6 +61,8 @@
 #define ESC_RESET_FG ESC_PREFIX "39" ESC_SUFFIX
 #define ESC_RESET_BG ESC_PREFIX "49" ESC_SUFFIX
 
+// #define ESC_DELETE_LINE ESC_PREFIX "2K" ESC_SUFFIX //\x1b[K
+
 #define ESC_REVERSE_FG_BG_ON ESC_PREFIX "7" ESC_SUFFIX
 #define ESC_REVERSE_FG_BG_OFF ESC_PREFIX "27" ESC_SUFFIX
 
@@ -55,6 +70,8 @@
 #define ESC_FAINT_ON ESC_PREFIX "2" ESC_SUFFIX
 #define ESC_BOLD_FAINT_OFF ESC_PREFIX "22" ESC_SUFFIX
 
+#define PRINTF_UNICODE(...) printf(__VA_ARGS__)
+#define PUTS_UNICODE(STRING) puts(STRING)
 
 void initUnicodeLib() {
 #ifdef _WIN32
@@ -69,22 +86,14 @@ void initUnicodeLib() {
 #endif
 }
 
-int printf_test_varargs(char* colorCode, char* fontCode, const char* format, ...) {
-    printf("%s%s", colorCode, fontCode);
-    va_list args;
-    va_start(args, format);
-    vprintf(format, args);
-    va_end(args);
-    printf(ESC_RESET_ALL);
-}
-
-
 int main() {
     initUnicodeLib();
 
     printf("%s%sColored BG %s no more colored BG\n", ESC_FG_BLUE, ESC_BG_B_MAGENTA, ESC_RESET_ALL);
     printf("кошка 日本国\n");
     printf(ESC_FG_B_GREEN "кошка 日本国\n" ESC_RESET_ALL);
+
+    PRINTF_UNICODE(ESC_FG_B_BLUE ESC_BG_RED "кошка " ESC_BG_BLUE "日本国 %s\n" ESC_RESET_ALL, "test");
 
     return 0;
 }
