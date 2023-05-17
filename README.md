@@ -68,6 +68,16 @@ To reset the color and highlight you can use the function below:
 printf(ESC_RESET_ALL "кошка 日本国");
 ```
 
+#### Use of the printf varyings
+
+You can still use the varying arguments of the printf function.
+
+```c
+printf(ESC_FG_B_BLUE ESC_BG_B_RED "Varying argument %d and %d" ESC_RESET_ALL "\n",1 , 2 );
+```
+
+Check the `demo.c` file in the `cUnicodeLib` folder for more examples.
+
 #### Notes
 
 > **Note:**  

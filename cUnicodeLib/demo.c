@@ -34,5 +34,8 @@ int main() {
     // Print utf8 text with colored foreground
     printf(ESC_FG_B_YELLOW "Print utf8 text with colored foreground: кошка 日本国" ESC_RESET_ALL "\n");
 
+    // Use with varying parameters
+    printf(ESC_FG_B_BLUE ESC_BG_B_RED "Varying argument %d and %d" ESC_RESET_ALL "\n",1 , 2 );
+
     return 0;
 }
