@@ -61,7 +61,7 @@ Code system:
 #define ESC_RESET_FG ESC_PREFIX "39" ESC_SUFFIX
 #define ESC_RESET_BG ESC_PREFIX "49" ESC_SUFFIX
 
-// #define ESC_DELETE_LINE ESC_PREFIX "2K" ESC_SUFFIX //\x1b[K
+#define ESC_DELETE_LINE ESC_PREFIX "2K" ESC_SUFFIX //\x1b[K
 
 #define ESC_REVERSE_FG_BG_ON ESC_PREFIX "7" ESC_SUFFIX
 #define ESC_REVERSE_FG_BG_OFF ESC_PREFIX "27" ESC_SUFFIX
@@ -69,9 +69,6 @@ Code system:
 #define ESC_BOLD_ON ESC_PREFIX "1" ESC_SUFFIX
 #define ESC_FAINT_ON ESC_PREFIX "2" ESC_SUFFIX
 #define ESC_BOLD_FAINT_OFF ESC_PREFIX "22" ESC_SUFFIX
-
-#define PRINTF_UNICODE(...) printf(__VA_ARGS__)
-#define PUTS_UNICODE(STRING) puts(STRING)
 
 void initUnicodeLib() {
 #ifdef _WIN32
@@ -89,11 +86,14 @@ void initUnicodeLib() {
 int main() {
     initUnicodeLib();
 
-    printf("%s%sColored BG %s no more colored BG\n", ESC_FG_BLUE, ESC_BG_B_MAGENTA, ESC_RESET_ALL);
     printf("кошка 日本国\n");
-    printf(ESC_FG_B_GREEN "кошка 日本国\n" ESC_RESET_ALL);
 
-    PRINTF_UNICODE(ESC_FG_B_BLUE ESC_BG_RED "кошка " ESC_BG_BLUE "日本国 %s\n" ESC_RESET_ALL, "test");
+    printf(ESC_FG_MAGENTA "кошка 日本国\n");
+
+    printf(ESC_FG_RED ESC_BG_BLUE "кошка 日本国\n" ESC_RESET_BG);
+    //    printf(ESC_FG_RED ESC_BG_BLUE "кошка 日本国\n" ESC_RESET_BG ESC_DELETE_LINE);
+
+    printf(ESC_FG_B_GREEN "кошка 日本国 %d " ESC_FG_YELLOW "%s\n", 42, "Hello World" ESC_RESET_ALL);
 
     return 0;
 }

@@ -13,10 +13,12 @@ Simple C Library to write UTF8 code in Windows and macOS and Linux in console mo
 ## Features
 
 - [x] Write UTF8
-- [x] Use color
-- [x] Highlight
+- [x] Set font color
+- [x] Set text highlight
 
 ## QuickStart
+
+### Setup
 
 To use the lib, download the cUnicodeLib file header and include it in your project.
 
@@ -30,83 +32,79 @@ Then, you need to initialize the lib with the function `initUnicodeLib()`.
 void initUnicodeLib();
 ```
 
-[//]: # (### Functions)
+### Example
 
-[//]: # (The different functions you can use are listed below:)
+#### Write UTF8
 
-[//]: # ()
+To write a text you can use the function below:
 
-[//]: # (| Function             | Description                                                              | )
+```c
+PRINTF_UNICODE("кошка 日本国");
+```
 
-[//]: # (|----------------------|--------------------------------------------------------------------------|)
+This one will write the previous text correctly in the console.
 
-[//]: # (| PRINTF_UNICODE       | Equivalent to printf with utf8 implementation                            |)
+PLACEHOLDER FOR THE IMAGE
 
-[//]: # (| PUTS_UNICODE         | Equivalent to puts with utf8 implementation                              |)
+#### Change the color of the text
 
-[//]: # (| PRINTF_UNICODE_COLOR | Equivalent to printf with utf8 text highlight or colored, implementation |            )
+You can also change the color of the text with the function below:
 
-[//]: # (| PUTS_UNICODE_COLOR   | Equivalent to puts with utf8 text highlight or colored, implementation   |)
+```c
+PRINTF_UNICODE(ESC_FG_RED "кошка 日本国");
+```
 
-[//]: # ()
+PLACEHOLDER FOR THE IMAGE
 
-[//]: # (### Color text parameters)
+#### Change the highlight of the text
 
-[//]: # ()
+You can also change the highlight of the text with the function below:
 
-[//]: # (By passing one of the following macros as a first parameter in the functions `PRINTF_UNICODE_COLOR`)
+```c
+PRINTF_UNICODE(ESC_BG_BLUE "кошка 日本国");
+```
 
-[//]: # (or `PUTS_UNICODE_COLOR`, you can change the color of the text.)
+PLACEHOLDER FOR THE IMAGE
 
-[//]: # ()
+#### Combine font color and highlight
 
-[//]: # (| Function | Description   | )
+You can also combine both of them:
 
-[//]: # (|----------|---------------|)
+```c
+PRINTF_UNICODE(ESC_FG_RED ESC_BG_BLUE "кошка 日本国");
+```
 
-[//]: # (| RED      | Red color     |)
+PLACEHOLDER FOR THE IMAGE
 
-[//]: # (| GREEN    | Green color   |)
+#### Reset the color and highlight
 
-[//]: # (| YELLOW   | Yellow color  |)
+To reset the color and highlight you can use the function below:
 
-[//]: # (| BLUE     | Blue color    |)
+```c
+PRINTF_UNICODE(ESC_RESET_ALL);
+```
 
-[//]: # (| MAGENTA  | Magenta color |)
+This will reset the color and highlight to the default one.
 
-[//]: # (| CYAN     | Cyan color    |)
+PLACEHOLDER FOR THE IMAGE
 
-[//]: # (| WHITE    | White color   |)
+#### Use of varying arguments
 
-[//]: # ()
+You can also use varying arguments with the function below:
 
-[//]: # (### Highlight text parameters)
+```c
+PRINTF_UNICODE(ESC_FG_RED ESC_BG_BLUE  "кошка 日本国 %d %s", 42, "Hello World" ESC_RESET_ALL);
+```
 
-[//]: # ()
+This one print the text with the color and takes two arguments to print (like the printf function).
+The last argument is used to reset the color and highlight to the default one for the next print.
 
-[//]: # (By passing one of the following macros as a first parameter in the functions `PRINTF_UNICODE_COLOR`)
+PLACEHOLDER FOR THE IMAGE
 
-[//]: # (or `PUTS_UNICODE_COLOR`, you can change the highlight of the text.)
+#### Notes
 
-[//]: # ()
-
-[//]: # (| Function          | Description       | )
-
-[//]: # (|-------------------|-------------------|)
-
-[//]: # (| HIGHLIGHT_BLACK   | Black highlight   |)
-
-[//]: # (| HIGHLIGHT_RED     | Red highlight     |)
-
-[//]: # (| HIGHLIGHT_GREEN   | Green highlight   |)
-
-[//]: # (| HIGHLIGHT_YELLOW  | Yellow highlight  |)
-
-[//]: # (| HIGHLIGHT_BLUE    | Blue highlight    |)
-
-[//]: # (| HIGHLIGHT_MAGENTA | Magenta highlight |)
-
-[//]: # (| HIGHLIGHT_CYAN    | Cyan highlight    |)
+> **Note:**  
+> If you don't call the `ESC_RESET_ALL` function, the color and highlight will be kept for the next prints.
 
 ## Test the lib
 
