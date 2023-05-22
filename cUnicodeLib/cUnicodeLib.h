@@ -72,7 +72,7 @@ Code system:
 #define ESC_BOLD_FAINT_OFF ESC_PREFIX "22" ESC_SUFFIX
 
 #define ESC_DELETE_LINE ESC_PREFIX "2K"  //\x1b[K
-#define ESC_HOME ESC_PREFIX "H"          //\x1b[H
+#define ESC_CURSOR_HOME ESC_PREFIX "H"   //\x1b[H
 #define ESC_CLEAR_SCREEN ESC_PREFIX "2J" //\x1b[2J
 
 // #define PRINTF_UNICODE(...) printf(__VA_ARGS__)
