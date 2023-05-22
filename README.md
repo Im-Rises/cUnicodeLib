@@ -10,7 +10,16 @@
 
 Simple C Library to write UTF8 code in Windows and macOS and Linux in console mode.
 
+## Images
+
 ![Capture d'écran 2023-05-16 222504](https://github.com/Im-Rises/cUnicodeLib/assets/59691442/b8e94c42-91f5-4fa3-9ac6-ca853663c7a6)
+
+## Demos
+
+https://github.com/Im-Rises/cubeAscii/assets/59691442/f5bd5eae-67f1-4b75-88f0-6140808ba2f8
+
+I use this lib in my project [cubeAscii](https://github.com/Im-Rises/cubeAscii) to display the cube in the console with
+colors for Windows, macOS and Linux.
 
 ## Features
 
