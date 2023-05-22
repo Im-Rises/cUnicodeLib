@@ -71,9 +71,10 @@ Code system:
 #define ESC_FAINT_ON ESC_PREFIX "2" ESC_SUFFIX
 #define ESC_BOLD_FAINT_OFF ESC_PREFIX "22" ESC_SUFFIX
 
-#define ESC_DELETE_LINE ESC_PREFIX "2K"  //\x1b[K
-#define ESC_CURSOR_HOME ESC_PREFIX "H"   //\x1b[H
-#define ESC_CLEAR_SCREEN ESC_PREFIX "2J" //\x1b[2J
+#define ESC_DELETE_LINE ESC_PREFIX "2K"     //\x1b[K
+#define ESC_CURSOR_HOME ESC_PREFIX "H"      //\x1b[H
+#define ESC_CLEAR_SCREEN ESC_PREFIX "2J"    //\x1b[2J
+#define ESC_CURSOR_NEXT_LINE ESC_PREFIX "E" //\x1b[E
 
 // #define PRINTF_UNICODE(...) printf(__VA_ARGS__)
 // #define PUTS_UNICODE(STRING) puts(STRING)
