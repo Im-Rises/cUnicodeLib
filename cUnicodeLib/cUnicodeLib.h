@@ -79,17 +79,20 @@ Code system:
 // #define PRINTF_UNICODE(...) printf(__VA_ARGS__)
 // #define PUTS_UNICODE(STRING) puts(STRING)
 
-void initUnicodeLib() {
+int initUnicodeLib() {
+    int result = 0;
 #ifdef _WIN32
     // Set ANSI escape codes
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     DWORD dwMode = 0;
-    GetConsoleMode(hOut, &dwMode);
+    result |= GetConsoleMode(hOut, &dwMode);
     dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-    SetConsoleMode(hOut, dwMode);
+    result |= SetConsoleMode(hOut, dwMode);
     // Set UTF8
-    SetConsoleOutputCP(CP_UTF8);
+    result |= SetConsoleOutputCP(CP_UTF8);
+    return result == 1 ? 0 : 1;
 #endif
+    return result;
 }
 
 #endif // !DEF_CUNICODELIB
