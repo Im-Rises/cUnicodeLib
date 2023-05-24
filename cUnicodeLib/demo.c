@@ -1,7 +1,15 @@
 #include "cUnicodeLib.h"
 
 int main() {
-    initUnicodeLib();
+    if (initUnicodeLib() == 0)
+    {
+        printf("UnicodeLib initialized successfully\n");
+    }
+    else
+    {
+        fprintf(stderr, "UnicodeLib initialization failed\n");
+        return 1;
+    }
 
     /* Examples using the printf varyings parameters */
 
@@ -35,7 +43,7 @@ int main() {
     printf(ESC_FG_B_YELLOW "Print utf8 text with colored foreground: кошка 日本国" ESC_RESET_ALL "\n");
 
     // Use with varying parameters
-    printf(ESC_FG_B_BLUE ESC_BG_B_RED "Varying argument %d and %d" ESC_RESET_ALL "\n",1 , 2 );
+    printf(ESC_FG_B_BLUE ESC_BG_B_RED "Varying argument %d and %d" ESC_RESET_ALL "\n", 1, 2);
 
     return 0;
 }

@@ -43,6 +43,20 @@ Then, you need to initialize the lib with the function `initUnicodeLib()`.
 void initUnicodeLib();
 ```
 
+Be sure to test if the lib is correctly initialized, prefer using the function this way:
+
+```c
+if (initUnicodeLib() == 0)
+{
+    printf("UnicodeLib initialized successfully\n");
+}
+else
+{
+    fprintf(stderr, "UnicodeLib initialization failed\n");
+    return 1;
+}
+```
+
 ### Example
 
 #### Write UTF8

@@ -90,8 +90,8 @@ int initUnicodeLib() {
     result |= SetConsoleMode(hOut, dwMode);
     // Set UTF8
     result |= SetConsoleOutputCP(CP_UTF8);
+    return result == 1 ? 0 : 1;
 #endif
-
     return result;
 }
 
