@@ -1,8 +1,6 @@
 #ifndef DEF_CUNICODELIB
 #define DEF_CUNICODELIB
 
-#include <stdio.h>
-
 #ifdef _WIN32
 #include <Windows.h>
 #endif
