@@ -1,12 +1,6 @@
 #ifndef DEF_CUNICODELIB
 #define DEF_CUNICODELIB
 
-#include <stdio.h>
-
-#ifdef _WIN32
-#include <Windows.h>
-#endif
-
 /*
 Code system:
     Color	    Foreground Code	Background Code
@@ -18,6 +12,33 @@ Code system:
     Magenta	    35				45
     Cyan	    36				46
     White	    37				47
+
+    Color       Bright Color	Foreground Code	Background Code
+    Black	    90				100
+    Red		    91				101
+    Green	    92				102
+    Yellow	    93				103
+    Blue	    94				104
+    Magenta	    95				105
+    Cyan	    96				106
+    White	    97				107
+
+    Reset ALL  0
+
+    Reset FG   39
+    Reset BG   49
+
+    Reverse FG/BG 7
+    Reverse FG/BG Off 27
+
+//    BOLD_ON 1
+//    FAINT_ON 2
+//    BOLD_FAINT_OFF 22
+
+    DELETE_LINE 2K
+    CURSOR_HOME H
+    CLEAR_SCREEN 2J
+    CURSOR_NEXT_LINE E
 */
 
 #define ESC_PREFIX "\x1b["
@@ -67,9 +88,9 @@ Code system:
 #define ESC_REVERSE_FG_BG_ON ESC_PREFIX "7" ESC_SUFFIX
 #define ESC_REVERSE_FG_BG_OFF ESC_PREFIX "27" ESC_SUFFIX
 
-#define ESC_BOLD_ON ESC_PREFIX "1" ESC_SUFFIX
-#define ESC_FAINT_ON ESC_PREFIX "2" ESC_SUFFIX
-#define ESC_BOLD_FAINT_OFF ESC_PREFIX "22" ESC_SUFFIX
+// #define ESC_BOLD_ON ESC_PREFIX "1" ESC_SUFFIX
+// #define ESC_FAINT_ON ESC_PREFIX "2" ESC_SUFFIX
+// #define ESC_BOLD_FAINT_OFF ESC_PREFIX "22" ESC_SUFFIX
 
 #define ESC_DELETE_LINE ESC_PREFIX "2K"     //\x1b[K
 #define ESC_CURSOR_HOME ESC_PREFIX "H"      //\x1b[H
@@ -79,20 +100,6 @@ Code system:
 // #define PRINTF_UNICODE(...) printf(__VA_ARGS__)
 // #define PUTS_UNICODE(STRING) puts(STRING)
 
-int initUnicodeLib() {
-    int result = 0;
-#ifdef _WIN32
-    // Set ANSI escape codes
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    DWORD dwMode = 0;
-    result |= GetConsoleMode(hOut, &dwMode);
-    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-    result |= SetConsoleMode(hOut, dwMode);
-    // Set UTF8
-    result |= SetConsoleOutputCP(CP_UTF8);
-    return result == 1 ? 0 : 1;
-#endif
-    return result;
-}
+int initUnicodeLib();
 
 #endif // !DEF_CUNICODELIB
