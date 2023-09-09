@@ -1,4 +1,1 @@
-﻿set(SRCS "demo.c")
-set(HEADERS "cUnicodeLib.h")
-
-add_executable(${PROJECT_NAME} ${SRCS} ${HEADERS})
+﻿add_library(${PROJECT_NAME} SHARED cUnicodeLib.c)
