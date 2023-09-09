@@ -14,7 +14,7 @@ Simple C Library to write UTF8 code in Windows and macOS and Linux in console mo
 
 ![Capture d'écran 2023-05-16 222504](https://github.com/Im-Rises/cUnicodeLib/assets/59691442/b8e94c42-91f5-4fa3-9ac6-ca853663c7a6)
 
-## Demos
+## Video Demo
 
 https://github.com/Im-Rises/cubeAscii/assets/59691442/f5bd5eae-67f1-4b75-88f0-6140808ba2f8
 
@@ -99,27 +99,17 @@ You can still use the varying arguments of the printf function.
 printf(ESC_FG_B_BLUE ESC_BG_B_RED "Varying argument %d and %d" ESC_RESET_ALL "\n",1 , 2 );
 ```
 
-Check the `demo.c` file in the `cUnicodeLib` folder for more examples.
+Check the `main.c` file in the `test` folder for more examples.
 
 #### Notes
 
 > **Note:**  
 > If you don't call the `ESC_RESET_ALL` function, the color and highlight will be kept for the next prints.
 
-## Demo
+## Demo Example
 
-The demo can be found in the `demo.c` file in the `cUnicodeLib` folder.
-use CMake or the command line to compile the demo.
-
-```bash
-gcc demo.c
-```
-
-Start the demo with the command line.
-
-```bash
-./a.out
-```
+The demo can be found in the `test` folder.
+Use CMake or the command line to compile the demo.
 
 The output should be like this:
 
@@ -127,7 +117,7 @@ The output should be like this:
 
 ## Test the lib
 
-To test the lib a `demo.c` can be found in the `cUnicodeLib` folder. You can base your code on this file and by
+To test the lib a `main.c` file can be found in the `test` folder. You can base your code on this file and by
 compiling it with the `cUnicodeLib` files, you'll see a display example.
 
 ## Github-Actions
