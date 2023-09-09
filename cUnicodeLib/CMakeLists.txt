@@ -1,1 +1,1 @@
-﻿add_library(${PROJECT_NAME} SHARED cUnicodeLib.c)
+﻿add_library(${PROJECT_NAME} STATIC cUnicodeLib.c)
