@@ -1,4 +1,4 @@
-include_directories(${CMAKE_SOURCE_DIR}/${PROJECT_NAME})
+include_directories(${PROJECT_SOURCE_DIR}/${PROJECT_NAME})
 
 set(TEST_NAME "${PROJECT_NAME}Test")
 
