@@ -3,6 +3,7 @@ include_directories(${CMAKE_SOURCE_DIR}/${PROJECT_NAME})
 set(TEST_NAME "${PROJECT_NAME}Test")
 
 enable_testing()
+
 add_executable(${TEST_NAME} main.c)
-link_libraries(${TEST_NAME} ${PROJECT_NAME})
+target_link_libraries(${TEST_NAME} ${PROJECT_NAME})
 add_test(${TEST_NAME} ${TEST_NAME})
