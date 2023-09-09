@@ -1,5 +1,4 @@
-#ifndef DEF_CUNICODELIB
-#define DEF_CUNICODELIB
+#include "cUnicodeLib.h"
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -20,5 +19,3 @@ int initUnicodeLib() {
 #endif
     return result;
 }
-
-#endif // !DEF_CUNICODELIB
