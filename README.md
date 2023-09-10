@@ -26,6 +26,11 @@ colors for Windows, macOS and Linux.
 - [x] Write UTF8
 - [x] Set font color
 - [x] Set text highlight
+- [ ] Bold text
+- [ ] Underline text
+- [ ] Blink text
+- [ ] Inverse text
+- [ ] ...
 
 ## QuickStart
 
@@ -115,26 +120,19 @@ The output should be like this:
 
 ![Capture d'écran 2023-05-16 222504](https://github.com/Im-Rises/cUnicodeLib/assets/59691442/b8e94c42-91f5-4fa3-9ac6-ca853663c7a6)
 
-## Test the lib
-
-To test the lib a `main.c` file can be found in the `test` folder. You can base your code on this file and by
-compiling it with the `cUnicodeLib` files, you'll see a display example.
-
 ## Github-Actions
 
-[![flawfinder](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/flawfinder.yml/badge.svg?branch=main)](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/flawfinder.yml)
 [![CMake](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/cmake.yml/badge.svg?branch=main)](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/cmake.yml)
+[![flawfinder](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/flawfinder.yml/badge.svg?branch=main)](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/flawfinder.yml)
 [![CodeQL](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/codeql.yml)
 [![Microsoft C++ Code Analysis](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/msvc.yml/badge.svg?branch=main)](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/msvc.yml)
-[![Cpp Cmake Publish](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/cpp-cmake-publish.yml/badge.svg?branch=main)](https://github.com/Im-Rises/cUnicodeLib/actions/workflows/cpp-cmake-publish.yml)
 
 The project is set with a set of different scripts:
 
-- flawfinder : to check for security flaws in the code
 - CMake : to build the project for Windows, macOS and Linux
+- flawfinder : to check for security flaws in the code
 - CodeQl : to check for code quality and security
 - Microsoft C++ Code Analysis : Microsoft code analysis tool
-- Cpp Cmake Publish : to publish the project on GitHub
 
 ## Documentations
 
