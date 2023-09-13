@@ -46,5 +46,11 @@ int main() {
     // Use with varying parameters
     printf(ESC_FG_B_BLUE ESC_BG_B_RED "Varying argument %d and %d" ESC_RESET_ALL "\n", 1, 2);
 
+    // Bold text
+    printf(ESC_BOLD_ON "Bold: Bold text - " ESC_BOLD_OFF "Normal: Normal text\n");
+
+    // Manual FG and BG
+    printf(ESC_FG_RGB(255, 0, 0) ESC_BG_RGB(0, 255, 0) "Red text with green background" ESC_RESET_ALL "\n");
+
     return 0;
 }

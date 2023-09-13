@@ -26,11 +26,8 @@ colors for Windows, macOS and Linux.
 - [x] Write UTF8
 - [x] Set font color
 - [x] Set text highlight
-- [ ] Bold text
-- [ ] Underline text
-- [ ] Blink text
-- [ ] Inverse text
-- [ ] ...
+- [x] Bold text
+- [x] Manual FG and BG color selection (24 bits)
 
 ## QuickStart
 
